@@ -32,6 +32,7 @@ const Navbar = () => {
   const updateLoginStatus = () => {
     const isLoggedIn = localStorage.getItem("loggedIn") === "true";
     const storedUser = localStorage.getItem("currentUser");
+    
 
     setLoggedIn(isLoggedIn);
     setCurrentUser(storedUser);
@@ -48,6 +49,7 @@ const Navbar = () => {
 
     return cleanup;
   }, [router]);
+
 
   return (
     <div>
@@ -119,7 +121,7 @@ const Navbar = () => {
               </div>
               <div
                 onClick={handleLogout}
-                className="cursor-pointer underline bg-red-500 p-1 text-sm text-white rounded-md hover:scale-110 transition-all">
+                className="cursor-pointer underline bg-red-500 p-2 text-white rounded-md hover:scale-110 transition-all">
                 Logout
               </div>
             </div>
@@ -128,9 +130,8 @@ const Navbar = () => {
 
         {!loggedIn && (
           <Link
-            className={`bg-white p-2 rounded-md items-center text-center flex transition-all hover:scale-110 md:hidden ${
-              isOpen ? "block" : "hidden"
-            }`}
+            className={`bg-white p-2 rounded-md items-center text-center flex transition-all hover:scale-110 
+            `}
             href="/login">
             Login
           </Link>
@@ -205,7 +206,7 @@ const Navbar = () => {
                       <span className="text-xl">{currentUser}</span>
                     </div>
                     <div
-                      className="cursor-pointer underline bg-red-500 p-1 text-white rounded-md hover:scale-110 transition-all"
+                      className="cursor-pointer underline bg-red-500 p-2 text-white rounded-md hover:scale-110 transition-all"
                       onClick={handleLogout}>
                       Logout
                     </div>
