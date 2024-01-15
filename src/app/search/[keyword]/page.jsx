@@ -4,6 +4,7 @@ import React from "react";
 import { useState } from "react";
 import ProductList from "@/components/ProductList";
 import getProducts from "@/utils/getProducts";
+import Loading from "@/app/loading";
 
 const SearchPage = ({ params }) => {
   const [searchResults, setSearchResults] = useState([]);
@@ -21,7 +22,7 @@ const SearchPage = ({ params }) => {
   return (
     <section>
       <h2 className="p-5 text-xl">Searching for {keyword} ...</h2>
-      <ProductList products={filtered} />
+      {loading ? <Loading /> : <ProductList products={filtered} />}
     </section>
   );
 };

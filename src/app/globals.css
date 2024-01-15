@@ -2,19 +2,69 @@
 @tailwind components;
 @tailwind utilities;
 
-img{
-    width: 100%;
-    min-height: 200px;
-    max-height: 500px;
-    object-fit: content;
-    height: auto;
-    transition: .3s ease all;
-    -webkit-transition: .3s ease all;
-    -moz-transition: .3s ease all;
-    -ms-transition: .3s ease all;
-    -o-transition: .3s ease all;
+* {
 }
 
-img:hover{
-    scale: 102%;
+img {
+  width: 100%;
+  min-height: 200px;
+  max-height: 500px;
+  object-fit: content;
+  height: auto;
+  transition: 0.3s ease all;
+  -webkit-transition: 0.3s ease all;
+  -moz-transition: 0.3s ease all;
+  -ms-transition: 0.3s ease all;
+  -o-transition: 0.3s ease all;
+}
+
+img:hover {
+  scale: 102%;
+}
+
+.list-country {
+  display: none;
+}
+.select-country .icon {
+  rotate: -90deg;
+}
+
+.select-country {
+  cursor: pointer;
+}
+
+.cont-country:hover .list-country {
+  display: block;
+}
+.cont-country:hover .icon {
+  rotate: 0deg;
+}
+
+.cart-icon {
+  transition: transform 0.3s ease-in-out; /* Menambahkan transisi untuk efek hover */
+}
+
+.cart-icon:hover {
+  transform: scale(1.1); /* Mengubah skala ikon saat hover */
+}
+
+.profile-icon {
+  transition: transform 0.3s ease-in-out;
+}
+
+.profile-icon:hover {
+  transform: scale(1.1);
+}
+
+.bg-all{
+    background-image: url(../assets/patternpad2.png);
+}
+
+.bg{
+    background-image: url(../assets/patternpad.png);
+}
+
+.bg-home{
+  background-image: url(../assets/pattrenpad3.png);
+  background-size: contain;
 }
