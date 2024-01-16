@@ -8,6 +8,7 @@ const Category = ({ products, setFilteredProducts }) => {
     "men's clothing",
     "women's clothing",
     "electronics",
+    "jewelery"
   ];
 
   const handleCategory = (category) => {
@@ -20,13 +21,13 @@ const Category = ({ products, setFilteredProducts }) => {
 
   return (
     <>
-      <h1 className="bg-home text-xl p-10">Welcome to, TokoKami !</h1>
-      <div className="flex flex-row justify-center gap-5 text-sm m-5">
+      <h1 className="bg-home text-sm lg:text-xl p-10">Welcome to, TokoKami !</h1>
+      <div className="hidden sm:flex sm:flex-row justify-center gap-5 text-sm m-5 lg:text-center lg:items-center">
         {categories?.map((category, index) => (
           <button
             key={index}
             className={
-              "border-2 rounded-2xl p-1 hover:bg-blue-400 hover:text-white transition-all"
+              "border-2 rounded-2xl p-1 hover:bg-blue-400 hover:text-white transition-all h-6 truncate w-full lg:w-48"
             }
             onClick={() => handleCategory(category)}>
             {category}

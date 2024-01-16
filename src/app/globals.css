@@ -2,13 +2,12 @@
 @tailwind components;
 @tailwind utilities;
 
-* {
-}
 
-img {
+
+img.product {
   width: 100%;
   min-height: 200px;
-  max-height: 500px;
+  max-height: 00px;
   object-fit: content;
   height: auto;
   transition: 0.3s ease all;
@@ -68,3 +67,5 @@ img:hover {
   background-image: url(../assets/pattrenpad3.png);
   background-size: contain;
 }
+
+

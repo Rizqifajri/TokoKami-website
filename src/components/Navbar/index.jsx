@@ -4,6 +4,8 @@ import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import InputSearch from "./InputSearch";
 import { useRouter } from "next/navigation";
+import Image from "next/image";
+import Logo from "../../assets/logoTokoKami.png";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -32,7 +34,6 @@ const Navbar = () => {
   const updateLoginStatus = () => {
     const isLoggedIn = localStorage.getItem("loggedIn") === "true";
     const storedUser = localStorage.getItem("currentUser");
-    
 
     setLoggedIn(isLoggedIn);
     setCurrentUser(storedUser);
@@ -50,25 +51,33 @@ const Navbar = () => {
     return cleanup;
   }, [router]);
 
-
   return (
     <div>
       <header
-        className="bg-blue-300 w-full h-auto p-4 flex justify-between items-center lg:flex-row flex-col relative"
+        className="bg-gray-100 w-full h-auto p-4 flex justify-between items-center relative"
         style={{ zIndex: 1000 }}>
-        <div className="flex items-center">
-          <Link href="/" className="text-3xl text-center mr-5">
-            Toko<span className="text-white">Kami</span>
+        <div className="flex items-center lg:justify-between ">
+          <Link href="/" className="">
+            <Image src={Logo} className="object-contain w-24 mr-5 sm:w-32" />
           </Link>
 
-          <InputSearch />
+          <InputSearch className="" />
+
+          {!loggedIn && (
+            <Link
+              className={`bg-white p-2 rounded-md text-center transition-all hover:scale-110 hidden sm:flex  ml-96
+            `}
+              href="/login">
+              Login
+            </Link>
+          )}
         </div>
 
         <div className="md:hidden ml-auto">
           <button
             onClick={toggleMenu}
-            className="text-gray-500 hover:text-white focus:text-white focus:outline-none absolute right-3 top-7">
-            <svg className="h-6 w-6 fill-current" viewBox="0 0 24 24">
+            className="text-black hover:text-white focus:text-white focus:outline-none absolute right-3 top-6">
+            <svg className="h-6 w-6 fill-current " viewBox="0 0 24 24">
               {isOpen ? (
                 <path d="M19 13H5v-2h14v2z" />
               ) : (
@@ -80,13 +89,27 @@ const Navbar = () => {
 
         {loggedIn && (
           <div
-            className={`md:flex md:flex-row gap-6 items-center ml-auto ${
-              isOpen ? "block" : "hidden"
+            className={`md:flex md:flex-row gap-6 items-center text-sm ml-auto ${
+              isOpen ? "hidden" : "hidden"
             }`}>
-            <Link href="/">Home</Link>
-            <Link href="/about">About Us</Link>
-            <Link href="/contact">Contact</Link>
-            <Link href="/cart">
+            <Link
+              className="hover:text-blue-400 hover:underline transition-all"
+              href="/">
+              Home
+            </Link>
+            <Link
+              className="hover:text-blue-400 hover:underline transition-all"
+              href="/about">
+              About Us
+            </Link>
+            <Link
+              className="hover:text-blue-400 hover:underline transition-all"
+              href="/contact">
+              Contact
+            </Link>
+            <Link
+              className="hover:text-blue-400 hover:underline transition-all"
+              href="/cart">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"
@@ -103,80 +126,71 @@ const Navbar = () => {
             </Link>
 
             <div className="flex items-center relative group">
-              <div className="flex items-center">
+              <div className="flex items-center text-black">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   fill="none"
                   viewBox="0 0 24 24"
                   strokeWidth="1.5"
                   stroke="currentColor"
-                  className="profile-icon w-10 h-10 mr-2 transition-transform transform hover:scale-110">
+                  className="profile-icon w-10 h-10 mr-2 transition-transform transform scale-50 hover:scale-90">
                   <path
                     strokeLinecap="round"
                     strokeLinejoin="round"
                     d="M17.982 18.725A7.488 7.488 0 0 0 12 15.75a7.488 7.488 0 0 0-5.982 2.975m11.963 0a9 9 0 1 0-11.963 0m11.963 0A8.966 8.966 0 0 1 12 21a8.966 8.966 0 0 1-5.982-2.275M15 9.75a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z"
                   />
                 </svg>
-                <span className="mr-4 text-xl truncate">{currentUser}</span>
+                <span className="mr-4 text-sm truncate">{currentUser}</span>
               </div>
               <div
                 onClick={handleLogout}
-                className="cursor-pointer underline bg-red-500 p-2 text-white rounded-md hover:scale-110 transition-all">
+                className="cursor-pointer underline text-sm  p-1 rounded-md hover:scale-110 transition-all">
                 Logout
               </div>
             </div>
           </div>
         )}
 
-        {!loggedIn && (
-          <Link
-            className={`bg-white p-2 rounded-md items-center text-center flex transition-all hover:scale-110 
-            `}
-            href="/login">
-            Login
-          </Link>
-        )}
-
-        {/* Modal/Overlay for Humburger Menu */}
+        {/* Modal/Overlay for Hamburger Menu */}
         {isOpen && (
           <div className="fixed inset-0 z-50 bg-black bg-opacity-50 flex justify-end md:hidden">
-            <div className="bg-white w-64 h-full overflow-y-auto">
+            <div className=" backdrop-blur w-full h-full flex justify-start">
               <div className="p-4 flex flex-col h-screen justify-between">
                 <div>
                   <div className="cursor-pointer mb-4 " onClick={toggleMenu}>
                     <svg
-                      className="h-6 w-6 fill-current text-gray-500"
+                      className="h-6 w-6 fill-current text-white bg-red-500 "
                       viewBox="0 0 24 24">
                       <path d="M19 13H5v-2h14v2z" />
                     </svg>
                   </div>
-                  <div className="flex flex-col items-center gap-10  ">
+                  <div className="flex flex-col items-center gap-5 ">
                     <Link
-                      className="bg-blue-300 rounded-lg w-full text-center p-3"
+                      className="text-white border-2 rounded-lg w-72 text-center p-3"
                       href="/">
                       Home
                     </Link>
                     <Link
-                      className="bg-blue-300 rounded-lg w-full text-center p-3"
+                      className="text-white border-2 rounded-lg w-full text-center p-3"
                       href="/about">
                       About Us
                     </Link>
                     <Link
-                      className="bg-blue-300 rounded-lg w-full text-center p-3"
+                      className="text-white border-2 rounded-lg w-full text-center p-3"
                       href="/contact">
                       Contact
                     </Link>
                     <Link
-                      className="bg-blue-300 rounded-lg w-full p-3 "
+                      className="text-white border-2 rounded-lg w-full text-center p-3"
                       href="/cart">
                       <div className="w-6 h-6 mx-auto ">
                         <svg
                           xmlns="http://www.w3.org/2000/svg"
                           fill="none"
                           viewBox="0 0 24 24"
-                          stroke-width="1.5"
+                          strokeWidth="1.5"
                           stroke="currentColor"
-                          class="w-6 h-6 ">
+                          className="w-6 h-6 ">
                           <path
                             stroke-linecap="round"
                             stroke-linejoin="round"
@@ -185,28 +199,35 @@ const Navbar = () => {
                         </svg>
                       </div>
                     </Link>
+                    {!loggedIn && (
+                      <Link
+                        className={`bg-white p-2 rounded-md items-center text-center flex transition-all hover:scale-110`}
+                        href="/login">
+                        Login
+                      </Link>
+                    )}
                   </div>
                 </div>
                 {loggedIn && (
                   <div className="mt-4">
-                    <div className="flex items-center">
+                    <div className="flex items-center ">
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
                         fill="none"
                         viewBox="0 0 24 24"
                         strokeWidth="1.5"
                         stroke="currentColor"
-                        className="profile-icon w-6 h-6 mr-2">
+                        className="profile-icon w-6 h-6 mr-2 text-white">
                         <path
                           strokeLinecap="round"
                           strokeLinejoin="round"
                           d="M17.982 18.725A7.488 7.488 0 0 0 12 15.75a7.488 7.488 0 0 0-5.982 2.975m11.963 0a9 9 0 1 0-11.963 0m11.963 0A8.966 8.966 0 0 1 12 21a8.966 8.966 0 0 1-5.982-2.275M15 9.75a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z"
                         />
                       </svg>
-                      <span className="text-xl">{currentUser}</span>
+                      <span className="text-xl text-white ">{currentUser}</span>
                     </div>
                     <div
-                      className="cursor-pointer underline bg-red-500 p-2 text-white rounded-md hover:scale-110 transition-all"
+                      className="cursor-pointer underline bg-gray-200 mt-3 p-2 text-red-600 rounded-md hover:scale-110 transition-all"
                       onClick={handleLogout}>
                       Logout
                     </div>

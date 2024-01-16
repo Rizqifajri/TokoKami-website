@@ -69,7 +69,7 @@ const CartPage = () => {
       (total, itemId) => total + (quantityMap[itemId] || 1),
       0
     );
-    console.log(selectedItems)
+    console.log(selectedItems);
     const price = selectedItems.reduce((total, itemId) => {
       const item = cartItems.find((cartItem) => cartItem.id === itemId);
       return total + item.price * (quantityMap[itemId] || 1);
@@ -85,12 +85,12 @@ const CartPage = () => {
   }, [quantityMap, cartItems]);
 
   return (
-    <div className="flex flex-col justify-center m-10">
-      <h1 className="text-center text-3xl mb-10">Your Product Cart</h1>
+    <div className="flex flex-col justify-center m-5 w-auto">
+      <h1 className="text-center text-xl mb-5">Your Product Cart</h1>
       {cartItems.map((item) => (
         <section
           key={item.id}
-          className="w-full bg-gray-100 h-auto border-2 rounded-md mb-4"
+          className="w-auto bg-gray-100 h-auto border-2 rounded-md mb-4 "
           style={{
             background:
               "linear-gradient(to right, rgba(255,255,255,0.8) 0%, rgba(255,255,255,0.3) 100%)",
@@ -99,7 +99,7 @@ const CartPage = () => {
             <div className="dark:bg-black/10 mr-10">
               <label className="text-white">
                 <input
-                  className="dark:border-white-400/20 dark:scale-100 transition-all duration-500 ease-in-out dark:hover:scale-110 dark:checked:scale-100 w-5 h-5 "
+                  className="dark:border-white-400/20 dark:scale-100 transition-all duration-500 ease-in-out dark:hover:scale-110 dark:checked:scale-100 w-3 h-3 "
                   type="checkbox"
                   checked={selectedItems.includes(item.id)}
                   onChange={() => toggleSelected(item.id)}
@@ -109,35 +109,37 @@ const CartPage = () => {
             <img
               src={item.image}
               alt={item.title}
-              className="h-25 w-56 object-cover rounded"
+              className=" custom-image w-11 lg:w-24 object-contain rounded"
             />
-            <div className="ml-4 flex-grow">
-              <h2 className="text-lg font-semibold">{item.title}</h2>
+            <div className="ml-4 flex-grow ">
+              <h2 className="text-sm font-semibold">{item.title}</h2>
               <p className="text-gray-600">{`$${
                 item.price ? item.price * (quantityMap[item.id] || 1) : 0
               }`}</p>
-            </div>
-            <div className="flex items-center gap-5">
-              <button
-                onClick={() => increaseQuantity(item.id)}
-                className="bg-green-500 text-white px-2 rounded-l">
-                +
-              </button>
-              <span className="px-4">{quantityMap[item.id] || 1}</span>
-              <button
-                onClick={() => decreaseQuantity(item.id)}
-                className="bg-red-200 hover:bg-red-500 transition-all text-white px-2 rounded-r">
-                -
-              </button>
-              <button
+              <div className="flex items-center gap-3 justify-center sm:justify-end mt-3 text-xs lg:text-sm">
+                <button
+                  onClick={() => increaseQuantity(item.id)}
+                  className=" text-black px-1  rounded-full border-2">
+                  +
+                </button>
+                <span className="px-4">{quantityMap[item.id] || 1}</span>
+                <button
+                  onClick={() => decreaseQuantity(item.id)}
+                  className=" transition-all text-black px-1 border-2 rounded-full">
+                  -
+                </button>
+                <svg
                 onClick={() => handleRemove(item.id)}
-                className="cursor-pointer transition-all 
-                      bg-gray-700 text-white px-6 py-2 rounded-lg
-                      border-red-400
-                        border-b-[4px] hover:brightness-110 hover:-translate-y-[1px] hover:border-b-[6px]
-                        active:border-b-[2px] active:brightness-90 active:translate-y-[2px] hover:shadow-xl hover:shadow-red-300 shadow-green-300 active:shadow-none">
-                Remove
-              </button>
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="16"
+                  height="16"
+                  fill="currentColor"
+                  class="bi bi-trash "
+                  viewBox="0 0 16 16">
+                  <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5m2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5m3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0z" />
+                  <path d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4zM2.5 3h11V2h-11z" />
+                </svg>
+              </div>
             </div>
           </div>
         </section>
@@ -157,7 +159,7 @@ const CartPage = () => {
         totalItems={totalItems}
         totalPrice={totalPrice}
         selectedItems={selectedItems}
-        cartItems = {cartItems}
+        cartItems={cartItems}
       />
     </div>
   );

@@ -1,7 +1,12 @@
-"use client"
+"use client";
 
 import { useState, useEffect } from "react";
 import { FiChevronDown } from "react-icons/fi";
+import Image from "next/image";
+import Instagram from "../../assets/ig.png"
+import Email from "../../assets/gmail.png"
+import Whatsapp from "../../assets/wa.png"
+import Linkedn from "../../assets/linkdn.png"
 
 const FormField = () => {
   const [selectedCountry, setSelectedCountry] = useState("+62");
@@ -46,13 +51,39 @@ const FormField = () => {
 
   return (
     <div>
+      <h1 className="text-center mt-10 mb-10">Contact Us</h1>
+      <h3 className="text-sm text-center">
+        you can contact us with another platfrom
+      </h3>
+
+      <ul className="flex flex-col s:flex-row items-center text-sm justify-center mt-5 gap-10 w-11 mx-auto ">
+        <li className="">
+          <a href="">
+            <Image src={Instagram} />
+          </a>
+        </li>
+        <li>
+          <a href="">
+            <Image src={Whatsapp} />
+          </a>
+        </li>
+        <li>
+          <a href="">
+            <Image src={Linkedn} />
+          </a>
+        </li>
+        <li>
+          <a href="">
+            <Image src={Email} />
+          </a>
+        </li>
+      </ul>
+      <p className="text-center mt-10">or you can fill in the form below :</p>
       <section className="w-full flex justify-center pb-52 pl-4 pr-4">
         <form className="mt-28 max-w-[564px] w-full">
           <div className="flex flex-col gap-14">
             <div className="flex flex-col gap-3">
-              <label
-                htmlFor=""
-                className=" text-xl tracking-[0.07em]">
+              <label htmlFor="" className=" text-xl tracking-[0.07em]">
                 Nama Lengkap
               </label>
               <input
@@ -64,9 +95,7 @@ const FormField = () => {
               />
             </div>
             <div className="flex flex-col gap-3">
-              <label
-                htmlFor=""
-                className=" text-xl tracking-[0.07em]">
+              <label htmlFor="" className=" text-xl tracking-[0.07em]">
                 Email
               </label>
               <input
@@ -78,9 +107,7 @@ const FormField = () => {
               />
             </div>
             <div className="flex flex-col gap-3">
-              <label
-                htmlFor=""
-                className=" text-xl tracking-[0.07em]">
+              <label htmlFor="" className=" text-xl tracking-[0.07em]">
                 Nomor Handphone
               </label>
               <div className="flex gap-6">
@@ -121,9 +148,7 @@ const FormField = () => {
               </div>
             </div>
             <div className="flex flex-col gap-3 relative">
-              <label
-                htmlFor=""
-                className=" text-xl tracking-[0.07em]">
+              <label htmlFor="" className=" text-xl tracking-[0.07em]">
                 Pesan
               </label>
               <textarea

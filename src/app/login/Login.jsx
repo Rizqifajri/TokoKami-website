@@ -41,8 +41,8 @@ const Login = () => {
   };
 
   return (
-    <div className="flex items-center justify-center h-screen">
-      <div className="bg-white p-8 rounded shadow-md">
+    <div className="flex items-center justify-center h-screen backdrop-blur-sm">
+      <div className="bg-white p-8 rounded shadow-xl">
         <h1 className="text-2xl font-semibold mb-4">Login <span className="bg-blue-400 p-1 rounded-lg">Toko<span className="text-white">Kami</span></span> Account</h1>
         <div className="mb-4">
           <label className="block text-sm font-medium text-gray-600">

@@ -35,7 +35,7 @@ const ProductDetails = ({ params }) => {
           </h1>
           <div className="lg:flex justify-center gap-24 mx-auto ">
             <img
-              className="imgdetail w-64 mb-5 mx-auto lg:mx-0"
+              className="product imgdetail w-28 sm:w-40 object-contain mb-5 mx-auto lg:mx-0"
               src={product?.image}
               alt="ImageProductisLoading"
               width={350}
