@@ -54,9 +54,9 @@ const Navbar = () => {
   return (
     <div>
       <header
-        className="bg-gray-100 w-full h-auto p-4 flex justify-between items-center relative"
+        className="bg-gray-100 w-full h-auto p-4 flex justify-around  items-center relative"
         style={{ zIndex: 1000 }}>
-        <div className="flex items-center lg:justify-between ">
+        <div className="flex items-center sm:justify-between gap-5 ">
           <Link href="/" className="">
             <Image src={Logo} className="object-contain w-24 mr-5 sm:w-32" />
           </Link>
@@ -65,8 +65,8 @@ const Navbar = () => {
 
           {!loggedIn && (
             <Link
-              className={`bg-white p-2 rounded-md text-center transition-all hover:scale-110 hidden sm:flex  ml-96
-            `}
+              className={`bg-white p-2 rounded-md text-center transition-all hover:scale-110 hidden sm:flex sm:absolute sm:right-40 sm:text-xs sm:bottom-4 sm:py-1
+           lg:right-46 lg:text-sm lg:bottom-6 lg:py-1 `}
               href="/login">
               Login
             </Link>
